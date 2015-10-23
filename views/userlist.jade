@@ -1,18 +1,38 @@
-
-extends layout
-
-
-
-block content
-
-    h1.
-
-        User List
-
-    ul
-
-        select
-
-            each city, i in userlist
-
-                option=city.scity
+doctype html
+html(lang='en', ng-app='myApp')
+  head
+    meta(charset='utf-8')
+    title node
+    link(rel='stylesheet', href='css/app.css')
+    link(rel='stylesheet', href='css/bootstrap.css')
+    script(src='lib/angular/angular.js')
+    script(src='js/angularnodecontroller.js')
+  body(ng-controller='SimpleController')
+    .container-fluid
+      form(name='myForm')
+        label(for='Departure')  Departure: 
+        br
+        select(name='Departure', ng-model='data.singleSelect')
+          option(value='Helsinki') Helsinki
+          option(value='Turku') Turku
+          option(value='Tampere') Tampere
+          option(value='Imatra') Imatra
+          option(value='Mikkeli') Mikkeli
+        br
+        label(for='Arrive')  Arrive: 
+        br
+        select(name='Arrive', ng-model='data.singleSelect')
+          option(value='Helsinki') Helsinki
+          option(value='Turku') Turku
+          option(value='Tampere') Tampere
+          option(value='Imatra') Imatra
+          option(value='Mikkeli') Mikkeli
+        br
+        p
+          div
+            button(type='submit') Save now...
+    script.
+      function SimpleController($scope) {
+      $scope.cities = [{name:'Helsinki'}, {name:'Turku'},
+      {name:'Tampere'}, {name:'Imatra'}, {name:'Mikkeli'}];
+      }
